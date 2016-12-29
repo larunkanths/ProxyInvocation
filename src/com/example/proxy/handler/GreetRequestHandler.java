@@ -8,8 +8,8 @@ import com.example.annotations.GreetLogoutBanner;
 
 public class GreetRequestHandler<T> extends AbstractRequestHandler<T> {
 
-	public GreetRequestHandler(Class<T> intf, Object impl) {
-		super(intf, impl);
+	public GreetRequestHandler(Object impl) {
+		super(impl);
 	}
 
 	@Override

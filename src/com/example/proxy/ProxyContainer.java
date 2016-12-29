@@ -21,14 +21,14 @@ public class ProxyContainer {
 			throws ClassNotFoundException, InstantiationException,
 			IllegalAccessException {
 		Object impl = createImplementation(clazz);
-		return new GreetRequestHandler<T>(clazz, impl);
+		return new GreetRequestHandler<T>(impl);
 	}
 
-	private static <T> Object createImplementation(Class<T> stubIntf)
+	private static <T> Object createImplementation(Class<T> intf)
 			throws ClassNotFoundException, InstantiationException,
 			IllegalAccessException {
-		Object obj = stubIntf.getClassLoader()
-				.loadClass(stubIntf.getName() + "Impl").newInstance();
+		Object obj = intf.getClassLoader()
+				.loadClass(intf.getName() + "Impl").newInstance();
 		return obj;
 	}
 
