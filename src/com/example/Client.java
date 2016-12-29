@@ -1,9 +1,9 @@
-package com.example.client;
+package com.example;
 
 import com.example.annotations.GreetLoginBanner;
 import com.example.annotations.GreetLogoutBanner;
 
-public interface ClientStub {
+public interface Client {
 
 	@GreetLoginBanner
 	void login(String name);

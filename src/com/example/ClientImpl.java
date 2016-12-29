@@ -1,8 +1,7 @@
-package com.example.server;
+package com.example;
 
-import com.example.client.ClientStub;
 
-public class ClientStubImpl implements ClientStub {
+public class ClientImpl implements Client {
 
 	public void login(String name) {
 		System.out.println("Method Invocation: Welcome Back " + name);

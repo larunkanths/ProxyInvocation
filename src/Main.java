@@ -1,4 +1,4 @@
-import com.example.client.ClientStub;
+import com.example.Client;
 import com.example.proxy.ProxyContainer;
 
 public class Main {
@@ -6,7 +6,7 @@ public class Main {
 	public static void main(String args[]) throws ClassNotFoundException,
 			InstantiationException, IllegalAccessException {
 
-		ClientStub stub = ProxyContainer.createProxy(ClientStub.class);
+		Client stub = ProxyContainer.createProxy(Client.class);
 
 		stub.login("Arun");
 
