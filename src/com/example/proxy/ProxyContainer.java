@@ -29,15 +29,8 @@ public class ProxyContainer {
 	private static <T> InvocationHandler createInvocationHandler(Class<T> clazz)
 			throws ClassNotFoundException, InstantiationException,
 			IllegalAccessException {
-		Class<T> stubIntf = getStubClass(clazz);
-		Object impl = getImplObject(stubIntf);
-		return new GreetRequestHandler<T>(stubIntf, impl);
-	}
-
-	private static <T> Class<T> getStubClass(Class<T> clazz)
-			throws ClassNotFoundException {
-		Class<T> intf = (Class<T>) Class.forName(clazz.getName());
-		return (Class<T>) intf;
+		Object impl = getImplObject(clazz);
+		return new GreetRequestHandler<T>(clazz, impl);
 	}
 
 	private static <T> Object getImplObject(Class<T> stubIntf)
