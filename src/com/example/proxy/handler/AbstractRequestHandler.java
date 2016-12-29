@@ -1,11 +1,12 @@
 package com.example.proxy.handler;
 
 import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public abstract class AbstractRequestHandler<T> implements InvocationHandler {
 
-	private Object impl;
+	protected Object impl;
 
 	public AbstractRequestHandler(Object impl) {
 		this.impl = impl;
@@ -14,14 +15,22 @@ public abstract class AbstractRequestHandler<T> implements InvocationHandler {
 	@Override
 	public Object invoke(Object proxy, Method method, Object[] args)
 			throws Throwable {
-		preProcess(method);
-		Object returnObj = method.invoke(impl, args);
-		postProcess(method);
+		preProcess(proxy, method, args);
+		Object returnObj = invokeMethod(method, args);
+		postProcess(proxy, method, args);
 		return returnObj;
 	}
 
-	protected abstract void preProcess(Method method);
+	protected Object invokeMethod(Method method, Object[] args)
+			throws IllegalAccessException, IllegalArgumentException,
+			InvocationTargetException {
+		return method.invoke(impl, args);
+	}
 
-	protected abstract void postProcess(Method method);
+	protected abstract void preProcess(Object proxy, Method method,
+			Object[] args);
+
+	protected abstract void postProcess(Object proxy, Method method,
+			Object[] args);
 
 }

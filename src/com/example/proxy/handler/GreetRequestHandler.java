@@ -13,7 +13,7 @@ public class GreetRequestHandler<T> extends AbstractRequestHandler<T> {
 	}
 
 	@Override
-	protected void preProcess(Method method) {
+	protected void preProcess(Object proxy, Method method, Object[] args) {
 		System.out.println("Inside preProcess...");
 		Annotation[] annotations = method.getAnnotations();
 		for (Annotation annotation : annotations) {
@@ -26,7 +26,7 @@ public class GreetRequestHandler<T> extends AbstractRequestHandler<T> {
 	}
 
 	@Override
-	protected void postProcess(Method method) {
+	protected void postProcess(Object proxy, Method method, Object[] args) {
 		System.out.println("Inside postProcess...");
 		Annotation[] annotations = method.getAnnotations();
 		for (Annotation annotation : annotations) {
