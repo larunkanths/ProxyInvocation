@@ -6,7 +6,7 @@ import java.lang.reflect.Proxy;
 import com.example.proxy.handler.GreetRequestHandler;
 
 @SuppressWarnings("unchecked")
-public class ProxyContainer {
+public class ProxyFactory {
 
 	public static <T> T createProxy(Class<T> clazz)
 			throws ClassNotFoundException, InstantiationException,
