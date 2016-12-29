@@ -1,6 +1,5 @@
 package com.example;
 
-
 public class ClientImpl implements Client {
 
 	public void login(String name) {
